@@ -1,0 +1,52 @@
+Trying football-data.co.uk …
+  unavailable (HTTPError); using GitHub mirror
+Saved 8,000 matches (2005–2026) to /home/claude/epl-predictor/data/matches_clean.csv
+Tuned: logistic C=0.01, xgb {'max_depth': 2, 'min_child_weight': 10, 'n_estimators': 375}
+Dixon-Coles newcomer prior (attack, defence): [-0.212  0.203]
+  2023-24: trained on 2,660 matches, tested on 380  (LR 0.9232, XGB 0.9207, DC 0.9250, bookies 0.9093)
+  2024-25: trained on 3,040 matches, tested on 380  (LR 0.9765, XGB 0.9885, DC 0.9829, bookies 0.9706)
+  2025-26: trained on 3,420 matches, tested on 380  (LR 1.0304, XGB 1.0473, DC 1.0259, bookies 1.0185)
+
+   scope               model  log_loss  accuracy  brier    rps   n
+2025-26   Home-win baseline    1.0851    0.4263 0.6565 0.2278 380
+2025-26 Logistic regression    1.0304    0.4816 0.6203 0.2099 380
+2025-26             XGBoost    1.0473    0.4842 0.6306 0.2137 380
+2025-26         Dixon-Coles    1.0259    0.4632 0.6160 0.2086 380
+2025-26            Ensemble    1.0287    0.4737 0.6188 0.2093 380
+2025-26          Bookmakers    1.0185    0.4895 0.6115 0.2057 380
+
+         scope               model  log_loss  accuracy  brier    rps    n
+All 3 seasons   Home-win baseline    1.0735    0.4316 0.6498 0.2323 1140
+All 3 seasons Logistic regression    0.9767    0.5368 0.5823 0.1991 1140
+All 3 seasons             XGBoost    0.9855    0.5333 0.5864 0.2000 1140
+All 3 seasons         Dixon-Coles    0.9779    0.5281 0.5825 0.1997 1140
+All 3 seasons            Ensemble    0.9745    0.5272 0.5802 0.1982 1140
+All 3 seasons          Bookmakers    0.9661    0.5404 0.5745 0.1956 1140
+
+Ensemble bets by outcome (5% edge, average odds, 3 seasons):
+       bets  profit    roi  avg_odds
+pick                               
+A      306    0.35  0.001     5.397
+D       99   18.47  0.187     5.453
+H      319  -37.85 -0.119     3.840
+
+Betting, 5% edge:
+               model    odds  edge         scope  bets  win_rate  avg_odds  profit_units    roi  roi_ci_low  roi_ci_high
+Logistic regression average  0.05       2025-26   253     0.300     4.000          5.68  0.022      -0.191        0.246
+Logistic regression average  0.05 All 3 seasons   760     0.301     4.248        -21.31 -0.028      -0.148        0.095
+Logistic regression    best  0.05       2025-26   302     0.298     4.350          3.79  0.013      -0.179        0.214
+Logistic regression    best  0.05 All 3 seasons   961     0.311     4.535         12.27  0.013      -0.096        0.128
+            XGBoost average  0.05       2025-26   288     0.316     3.844          1.97  0.007      -0.176        0.195
+            XGBoost average  0.05 All 3 seasons   911     0.304     4.434        -37.62 -0.041      -0.145        0.070
+            XGBoost    best  0.05       2025-26   327     0.312     4.374          2.51  0.008      -0.165        0.182
+            XGBoost    best  0.05 All 3 seasons  1042     0.298     4.930        -31.86 -0.031      -0.135        0.078
+        Dixon-Coles average  0.05       2025-26   247     0.255     4.556        -22.22 -0.090      -0.296        0.134
+        Dixon-Coles average  0.05 All 3 seasons   770     0.273     4.675        -59.86 -0.078      -0.201        0.046
+        Dixon-Coles    best  0.05       2025-26   309     0.243     4.981        -31.69 -0.103      -0.292        0.094
+        Dixon-Coles    best  0.05 All 3 seasons   942     0.269     5.111        -89.42 -0.095      -0.207        0.021
+           Ensemble average  0.05       2025-26   232     0.267     4.285        -10.56 -0.046      -0.268        0.187
+           Ensemble average  0.05 All 3 seasons   724     0.287     4.719        -19.03 -0.026      -0.153        0.110
+           Ensemble    best  0.05       2025-26   293     0.253     4.774        -39.58 -0.135      -0.321        0.060
+           Ensemble    best  0.05 All 3 seasons   931     0.281     5.138        -32.41 -0.035      -0.151        0.088
+
+Saved models/ and reports/results.json
